@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://softwel.com.np/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://softwel.com.np/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://softwel.com.np/">
+      <s:element name="ComputeOTP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ComputeOTPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ComputeOTPResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerifyOTP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="otpcode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerifyOTPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VerifyOTPResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemainingTimeInSecond">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemainingTimeInSecondResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RemainingTimeInSecondResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ComputeOTPSoapIn">
+    <wsdl:part name="parameters" element="tns:ComputeOTP" />
+  </wsdl:message>
+  <wsdl:message name="ComputeOTPSoapOut">
+    <wsdl:part name="parameters" element="tns:ComputeOTPResponse" />
+  </wsdl:message>
+  <wsdl:message name="VerifyOTPSoapIn">
+    <wsdl:part name="parameters" element="tns:VerifyOTP" />
+  </wsdl:message>
+  <wsdl:message name="VerifyOTPSoapOut">
+    <wsdl:part name="parameters" element="tns:VerifyOTPResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemainingTimeInSecondSoapIn">
+    <wsdl:part name="parameters" element="tns:RemainingTimeInSecond" />
+  </wsdl:message>
+  <wsdl:message name="RemainingTimeInSecondSoapOut">
+    <wsdl:part name="parameters" element="tns:RemainingTimeInSecondResponse" />
+  </wsdl:message>
+  <wsdl:portType name="OTPServiceSoap">
+    <wsdl:operation name="ComputeOTP">
+      <wsdl:input message="tns:ComputeOTPSoapIn" />
+      <wsdl:output message="tns:ComputeOTPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyOTP">
+      <wsdl:input message="tns:VerifyOTPSoapIn" />
+      <wsdl:output message="tns:VerifyOTPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemainingTimeInSecond">
+      <wsdl:input message="tns:RemainingTimeInSecondSoapIn" />
+      <wsdl:output message="tns:RemainingTimeInSecondSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OTPServiceSoap" type="tns:OTPServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ComputeOTP">
+      <soap:operation soapAction="http://softwel.com.np/ComputeOTP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyOTP">
+      <soap:operation soapAction="http://softwel.com.np/VerifyOTP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemainingTimeInSecond">
+      <soap:operation soapAction="http://softwel.com.np/RemainingTimeInSecond" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="OTPServiceSoap12" type="tns:OTPServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ComputeOTP">
+      <soap12:operation soapAction="http://softwel.com.np/ComputeOTP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyOTP">
+      <soap12:operation soapAction="http://softwel.com.np/VerifyOTP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemainingTimeInSecond">
+      <soap12:operation soapAction="http://softwel.com.np/RemainingTimeInSecond" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OTPService">
+    <wsdl:port name="OTPServiceSoap" binding="tns:OTPServiceSoap">
+      <soap:address location="https://localhost:44307/OTPService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="OTPServiceSoap12" binding="tns:OTPServiceSoap12">
+      <soap12:address location="https://localhost:44307/OTPService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
